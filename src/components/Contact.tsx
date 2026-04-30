@@ -91,7 +91,7 @@ export default function Contact() {
               />
             </div>
             <button
-              type="button"
+              type="submit"
               className="w-full rounded-full bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-500 px-6 py-3 text-sm font-semibold text-slate-950 transition hover:opacity-90"
             >
               Request a Consultation

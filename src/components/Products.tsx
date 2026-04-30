@@ -34,7 +34,7 @@ const projects = [
     stack: "Python · Scikit-learn · Pandas · NumPy · Matplotlib",
   },
   {
-    title: "KevTecH Net",
+    title: "KevTech Net",
     description:
       "Advanced WiFi hotspot manager for Linux with intelligent internet sharing and monitoring.",
     stack: "C++17 · Qt6 · CMake · NetworkManager",
