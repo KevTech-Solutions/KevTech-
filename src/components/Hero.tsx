@@ -98,8 +98,8 @@ export default function Hero() {
               </div>
               <div className="space-y-3">
                 <div className="flex items-center justify-between text-xs text-slate-300">
-                  <span>System Reliability</span>
-                  <span>99.98%</span>
+                  <span>Reliability Target</span>
+                  <span>99.98% goal</span>
                 </div>
                 <div className="h-2 rounded-full bg-white/10">
                   <div className="h-2 w-[92%] rounded-full bg-gradient-to-r from-cyan-400 to-purple-500" />

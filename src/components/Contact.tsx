@@ -25,6 +25,7 @@ const contactDetails = [
 
 export default function Contact() {
   const [submitted, setSubmitted] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   return (
     <section id="contact" className="section-padding bg-slate-950">
@@ -60,40 +61,96 @@ export default function Contact() {
             className="glass-card space-y-6 rounded-3xl p-8"
             onSubmit={(event) => {
               event.preventDefault();
+              const formData = new FormData(event.currentTarget);
+              const name = String(formData.get("name") ?? "").trim();
+              const email = String(formData.get("email") ?? "").trim();
+              const subject = String(formData.get("subject") ?? "").trim();
+              const message = String(formData.get("message") ?? "").trim();
+
+              if (!name || !email || !subject || !message) {
+                setError("Please complete all fields before submitting.");
+                setSubmitted(false);
+                return;
+              }
+
+              setError(null);
+              const mailto = new URL("mailto:engineerjuliusjr47@gmail.com");
+              mailto.searchParams.set(
+                "subject",
+                `${subject} (KevTech Solutions)`
+              );
+              mailto.searchParams.set(
+                "body",
+                `Name: ${name}\nEmail: ${email}\n\n${message}`
+              );
+              window.location.href = mailto.toString();
               setSubmitted(true);
+              event.currentTarget.reset();
             }}
           >
             <div className="grid gap-4 sm:grid-cols-2">
               <div className="space-y-2">
-                <label className="text-sm text-slate-200">Full Name</label>
+                <label
+                  htmlFor="contact-name"
+                  className="text-sm text-slate-200"
+                >
+                  Full Name
+                </label>
                 <input
+                  id="contact-name"
+                  name="name"
                   type="text"
                   placeholder="Your name"
+                  required
                   className="w-full rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white placeholder:text-slate-400 focus:border-cyan-400 focus:outline-none"
                 />
               </div>
               <div className="space-y-2">
-                <label className="text-sm text-slate-200">Email Address</label>
+                <label
+                  htmlFor="contact-email"
+                  className="text-sm text-slate-200"
+                >
+                  Email Address
+                </label>
                 <input
+                  id="contact-email"
+                  name="email"
                   type="email"
                   placeholder="you@email.com"
+                  required
                   className="w-full rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white placeholder:text-slate-400 focus:border-cyan-400 focus:outline-none"
                 />
               </div>
             </div>
             <div className="space-y-2">
-              <label className="text-sm text-slate-200">Subject</label>
+              <label
+                htmlFor="contact-subject"
+                className="text-sm text-slate-200"
+              >
+                Subject
+              </label>
               <input
+                id="contact-subject"
+                name="subject"
                 type="text"
                 placeholder="How can we help?"
+                required
                 className="w-full rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white placeholder:text-slate-400 focus:border-cyan-400 focus:outline-none"
               />
             </div>
             <div className="space-y-2">
-              <label className="text-sm text-slate-200">Message</label>
+              <label
+                htmlFor="contact-message"
+                className="text-sm text-slate-200"
+              >
+                Message
+              </label>
               <textarea
+                id="contact-message"
+                name="message"
                 rows={5}
                 placeholder="Tell us about your goals and timeline."
+                required
                 className="w-full rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white placeholder:text-slate-400 focus:border-cyan-400 focus:outline-none"
               />
             </div>
@@ -103,8 +160,13 @@ export default function Contact() {
             >
               {submitted ? "Request Sent" : "Request a Consultation"}
             </button>
-            {submitted && (
-              <p className="text-center text-sm text-cyan-200">
+            {error && (
+              <p className="text-center text-sm text-rose-200" aria-live="polite">
+                {error}
+              </p>
+            )}
+            {submitted && !error && (
+              <p className="text-center text-sm text-cyan-200" aria-live="polite">
                 Thank you! Our team will reach out within one business day.
               </p>
             )}
