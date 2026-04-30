@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { Mail, MapPin, Phone } from "lucide-react";
+import { useState } from "react";
 import { fadeUp, scaleIn, staggerContainer } from "@/lib/animations";
 
 const contactDetails = [
@@ -23,6 +24,8 @@ const contactDetails = [
 ];
 
 export default function Contact() {
+  const [submitted, setSubmitted] = useState(false);
+
   return (
     <section id="contact" className="section-padding bg-slate-950">
       <div className="mx-auto max-w-6xl">
@@ -55,6 +58,10 @@ export default function Contact() {
             whileInView="visible"
             viewport={{ once: true, amount: 0.2 }}
             className="glass-card space-y-6 rounded-3xl p-8"
+            onSubmit={(event) => {
+              event.preventDefault();
+              setSubmitted(true);
+            }}
           >
             <div className="grid gap-4 sm:grid-cols-2">
               <div className="space-y-2">
@@ -94,8 +101,13 @@ export default function Contact() {
               type="submit"
               className="w-full rounded-full bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-500 px-6 py-3 text-sm font-semibold text-slate-950 transition hover:opacity-90"
             >
-              Request a Consultation
+              {submitted ? "Request Sent" : "Request a Consultation"}
             </button>
+            {submitted && (
+              <p className="text-center text-sm text-cyan-200">
+                Thank you! Our team will reach out within one business day.
+              </p>
+            )}
           </motion.form>
 
           <div className="space-y-6">
