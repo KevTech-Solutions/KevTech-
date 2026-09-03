@@ -1,199 +1,149 @@
-"use client";
+import { Activity, BadgeCheck, Layers, ShieldCheck, Star, Zap } from "lucide-react";
 
-import { motion } from "framer-motion";
-import {
-  Activity,
-  BadgeCheck,
-  Layers,
-  ShieldCheck,
-  Star,
-  Zap,
-} from "lucide-react";
-import { fadeUp, scaleIn, staggerContainer } from "@/lib/animations";
-
-const quickFixFeatures = [
+const quickFixCapabilities = [
   "Technician matching",
-  "Escrow-secured payments",
   "Emergency requests",
+  "Escrow-secured payments",
   "Service tracking",
-  "Ratings & reviews",
+  "Ratings and reviews",
+  "Real-time technician dispatch",
+  "Multi-role access",
+  "Marketplace analytics",
 ];
 
-const quickFixHighlights = [
-  "Real-time technician dispatch with Socket.IO tracking",
-  "Multi-role access for clients, technicians, and admins",
-  "Escrow wallet protection with M-Pesa integrations",
-  "Marketplace analytics for service quality and demand",
+const quickFixStack = [
+  "React Native / Expo",
+  "Node.js",
+  "Express.js",
+  "MongoDB",
+  "Socket.IO",
+  "M-Pesa",
+  "IntaSend",
+  "JWT",
 ];
 
 const projects = [
   {
     title: "MindGuard AI",
     description:
-      "Student mental health classification pipeline with analytics dashboards for institutions.",
-    stack: "Python · Scikit-learn · Pandas · NumPy · Matplotlib",
+      "Mental health classification project with analytical outputs designed for institutional insight.",
   },
   {
     title: "KevTech Net",
     description:
-      "Advanced WiFi hotspot manager for Linux with intelligent internet sharing and monitoring.",
-    stack: "C++17 · Qt6 · CMake · NetworkManager",
+      "Linux-focused hotspot management platform for intelligent connectivity control and monitoring.",
   },
   {
     title: "C-Wallet",
     description:
-      "Multi-wallet financial system with PIN security, dashboards, and transaction tracking.",
-    stack: "Secure wallet architecture · Analytics-first design",
+      "Digital wallet concept centered on secure transactions, account controls, and financial visibility.",
   },
   {
     title: "WekaCert",
     description:
-      "Certification & document management platform with verification, vault, and renewal flows.",
-    stack: "React Native · Node.js · MongoDB · JWT",
+      "Certification and document management platform supporting verification and renewal workflows.",
   },
   {
     title: "Livestock Management System",
     description:
-      "Farm operations suite for livestock tracking, health monitoring, and productivity analytics.",
-    stack: "Operational dashboards · Smart alerts",
+      "Operations platform for livestock tracking, health records, and farm productivity workflows.",
   },
 ];
 
 export default function Products() {
   return (
-    <section id="products" className="section-padding bg-slate-950">
+    <section id="products" className="section-padding scroll-mt-28 bg-slate-950">
       <div className="mx-auto max-w-6xl">
-        <motion.div
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.3 }}
-          className="space-y-6"
-        >
-          <motion.p
-            variants={fadeUp}
-            className="text-sm font-semibold uppercase tracking-[0.3em] text-cyan-300"
-          >
-            Products & Platforms
-          </motion.p>
-          <motion.h2 variants={fadeUp} className="section-title">
-            Flagship solutions engineered for real-world impact.
-          </motion.h2>
-          <motion.p variants={fadeUp} className="max-w-2xl text-lg text-slate-200">
-            From marketplace platforms to AI analytics, our product portfolio
-            showcases scalable architecture and intelligent digital systems.
-          </motion.p>
-        </motion.div>
+        <div className="max-w-3xl space-y-4">
+          <p className="text-sm font-semibold uppercase tracking-[0.3em] text-cyan-300">
+            Products & Projects
+          </p>
+          <h2 className="section-title">QuickFix leads our product portfolio.</h2>
+          <p className="text-lg text-slate-200">
+            We build product systems that combine marketplace logic, real-time
+            operations, and dependable payments in practical contexts.
+          </p>
+        </div>
 
-        <motion.div
-          variants={scaleIn}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.2 }}
-          className="glass-card mt-12 grid gap-10 rounded-3xl p-8 lg:grid-cols-[1.2fr_1fr]"
-        >
+        <article className="glass-card mt-12 grid gap-10 rounded-3xl p-8 lg:grid-cols-[1.25fr_0.75fr]">
           <div className="space-y-6">
-            <div className="flex items-center gap-3">
-              <span className="rounded-full border border-cyan-400/40 bg-cyan-400/10 px-4 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-cyan-200">
-                QuickFix · Flagship Product
-              </span>
-            </div>
-            <h3 className="text-3xl font-semibold text-white">
-              QuickFix — Home Service Marketplace
-            </h3>
+            <span className="inline-flex rounded-full border border-cyan-400/40 bg-cyan-400/10 px-4 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-cyan-200">
+              QuickFix · Flagship Product
+            </span>
+            <h3 className="text-3xl font-semibold text-white">QuickFix — Home Service Marketplace</h3>
             <p className="text-sm text-slate-200">
-              A comprehensive cross-platform home service platform connecting
-              customers with verified technicians across Kenya. Built with
-              intelligent matchmaking, escrow payments, and real-time operations
-              for trusted service delivery.
+              QuickFix connects customers to technicians with dispatch workflows,
+              secure payment handling, and role-based marketplace operations.
             </p>
-            <div className="grid gap-4 sm:grid-cols-2">
-              {quickFixFeatures.map((feature) => (
-                <div
-                  key={feature}
+
+            <div className="grid gap-3 sm:grid-cols-2">
+              {quickFixCapabilities.map((capability) => (
+                <p
+                  key={capability}
                   className="flex items-center gap-2 rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-slate-100"
                 >
-                  <BadgeCheck className="h-4 w-4 text-cyan-300" />
-                  {feature}
-                </div>
+                  <BadgeCheck className="h-4 w-4 text-cyan-300" aria-hidden="true" />
+                  {capability}
+                </p>
               ))}
             </div>
-            <div className="space-y-3 rounded-2xl border border-white/10 bg-white/5 p-5 text-sm text-slate-200">
-              <div className="flex items-center gap-2 text-cyan-200">
-                <Layers className="h-4 w-4" />
-                Architecture Highlights
-              </div>
-              <ul className="space-y-2">
-                {quickFixHighlights.map((highlight) => (
-                  <li key={highlight}>• {highlight}</li>
-                ))}
-              </ul>
-            </div>
-          </div>
-          <div className="space-y-6">
-            <div className="rounded-3xl border border-white/10 bg-gradient-to-br from-slate-900 via-slate-950 to-slate-900 p-6">
-              <div className="flex items-center gap-3 text-sm text-slate-200">
-                <Activity className="h-5 w-5 text-cyan-300" />
-                Real-time System Capabilities
-              </div>
-              <p className="mt-3 text-sm text-slate-200">
-                Live job tracking, technician presence, and automated
-                notifications are powered by Socket.IO, enabling instant status
-                updates and secure escrow release workflows.
-              </p>
-            </div>
-            <div className="rounded-3xl border border-white/10 bg-white/5 p-6">
-              <div className="flex items-center gap-3 text-sm text-slate-200">
-                <ShieldCheck className="h-5 w-5 text-purple-300" />
-                Marketplace Integrity
-              </div>
-              <p className="mt-3 text-sm text-slate-200">
-                Escrow-secured payments, ratings, and verified technicians create
-                a trusted marketplace with measurable service quality.
-              </p>
-            </div>
-            <div className="rounded-3xl border border-white/10 bg-white/5 p-6">
-              <div className="flex items-center gap-3 text-sm text-slate-200">
-                <Zap className="h-5 w-5 text-amber-300" />
-                Tech Stack
-              </div>
-              <p className="mt-3 text-sm text-slate-200">
-                React Native (Expo) · Node.js · Express.js · MongoDB · IntaSend ·
-                Socket.IO · JWT
-              </p>
-            </div>
-          </div>
-        </motion.div>
 
-        <motion.div
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.2 }}
-          className="mt-12 grid gap-6 md:grid-cols-2"
-        >
-          {projects.map((project) => (
-            <motion.div
-              key={project.title}
-              variants={scaleIn}
-              whileHover={{ y: -6 }}
-              className="glass-card rounded-3xl p-6"
-            >
-              <div className="flex items-center justify-between">
-                <h4 className="text-xl font-semibold text-white">
-                  {project.title}
-                </h4>
-                <Star className="h-5 w-5 text-cyan-300" />
+            <div className="rounded-2xl border border-white/10 bg-white/5 p-5 text-sm text-slate-200">
+              <div className="flex items-center gap-2 text-cyan-200">
+                <Layers className="h-4 w-4" aria-hidden="true" />
+                Architecture + Stack
               </div>
-              <p className="mt-3 text-sm text-slate-200">
-                {project.description}
+              <p className="mt-2">
+                {quickFixStack.join(" · ")}
               </p>
-              <p className="mt-4 text-xs uppercase tracking-[0.2em] text-slate-400">
-                {project.stack}
+            </div>
+          </div>
+
+          <div className="space-y-4">
+            <div className="rounded-2xl border border-white/10 bg-slate-900/75 p-5">
+              <div className="flex items-center gap-2 text-sm text-cyan-200">
+                <Activity className="h-5 w-5" aria-hidden="true" />
+                Real-time Operations
+              </div>
+              <p className="mt-2 text-sm text-slate-200">
+                Socket.IO-powered dispatch, job state updates, and synchronized
+                technician-client visibility.
               </p>
-            </motion.div>
+            </div>
+            <div className="rounded-2xl border border-white/10 bg-slate-900/75 p-5">
+              <div className="flex items-center gap-2 text-sm text-purple-200">
+                <ShieldCheck className="h-5 w-5" aria-hidden="true" />
+                Trust Model
+              </div>
+              <p className="mt-2 text-sm text-slate-200">
+                Escrow-based payments, role permissions, and ratings to improve
+                service confidence and marketplace integrity.
+              </p>
+            </div>
+            <div className="rounded-2xl border border-white/10 bg-slate-900/75 p-5">
+              <div className="flex items-center gap-2 text-sm text-amber-200">
+                <Zap className="h-5 w-5" aria-hidden="true" />
+                Payment Integrations
+              </div>
+              <p className="mt-2 text-sm text-slate-200">
+                M-Pesa and IntaSend integration patterns for regional transaction
+                practicality.
+              </p>
+            </div>
+          </div>
+        </article>
+
+        <div className="mt-12 grid gap-6 md:grid-cols-2">
+          {projects.map((project) => (
+            <article key={project.title} className="glass-card rounded-2xl p-6">
+              <div className="flex items-center justify-between">
+                <h3 className="text-xl font-semibold text-white">{project.title}</h3>
+                <Star className="h-5 w-5 text-cyan-300" aria-hidden="true" />
+              </div>
+              <p className="mt-3 text-sm text-slate-200">{project.description}</p>
+            </article>
           ))}
-        </motion.div>
+        </div>
       </div>
     </section>
   );
