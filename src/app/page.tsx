@@ -1,5 +1,7 @@
 import About from "@/components/About";
+import CompanyPositioning from "@/components/CompanyPositioning";
 import Contact from "@/components/Contact";
+import EngineeringApproach from "@/components/EngineeringApproach";
 import Footer from "@/components/Footer";
 import Hero from "@/components/Hero";
 import Navbar from "@/components/Navbar";
@@ -11,12 +13,14 @@ export default function Home() {
   return (
     <div className="bg-slate-950 text-white">
       <Navbar />
-      <main>
+      <main id="main-content">
         <Hero />
-        <About />
+        <CompanyPositioning />
         <Services />
+        <EngineeringApproach />
         <Products />
         <WhyUs />
+        <About />
         <Contact />
       </main>
       <Footer />
